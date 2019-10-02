@@ -23,7 +23,7 @@ public class FirstActivity extends AppCompatActivity {
     TextInputLayout tilName, tilEmail, tilContactNo;
     TextInputEditText tietName, tietEmail, tietContactNo;
     RadioGroup rgGender;
-    Button btnSignUp, btnViewUsers, btnViewDatabase;
+    Button btnInsertData, btnViewUsers, btnViewDatabase;
 
     String name, email, contactNo, gender;
 
@@ -43,7 +43,7 @@ public class FirstActivity extends AppCompatActivity {
         tietEmail = findViewById(R.id.tiet_email);
         tietContactNo = findViewById(R.id.tiet_contact_no);
         rgGender = findViewById(R.id.rg_gender);
-        btnSignUp = findViewById(R.id.btn_insert_data);
+        btnInsertData = findViewById(R.id.btn_insert_data);
         btnViewUsers = findViewById(R.id.btn_view_users);
         btnViewDatabase = findViewById(R.id.btn_view_database);
 
@@ -58,7 +58,7 @@ public class FirstActivity extends AppCompatActivity {
             }
         });
 
-        btnSignUp.setOnClickListener(new View.OnClickListener() {
+        btnInsertData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(validateForm()) {
@@ -66,14 +66,14 @@ public class FirstActivity extends AppCompatActivity {
                     email = tietEmail.getText().toString();
                     contactNo = tietContactNo.getText().toString();
 
-                    boolean insertResult = databaseHelper.insertUserDetails(email, name, contactNo, gender);
+                    boolean insertResult = databaseHelper.insertUserDetails(email, name, contactNo, gender);    // inserting data
                     if(insertResult) {
                         Toast.makeText(context, "Data inserted succesfully", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(context, "Data not inserted", Toast.LENGTH_SHORT).show();
                     }
 
-                    Intent intent = new Intent(context, FirstActivity.class);
+                    Intent intent = new Intent(context, FirstActivity.class);    // redirecting to same activity after inserting data
                     startActivity(intent);
                 }
             }
@@ -82,7 +82,7 @@ public class FirstActivity extends AppCompatActivity {
         btnViewUsers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, SecondActivity.class);
+                Intent intent = new Intent(context, SecondActivity.class);  // Moving to next activity for data retrieval
                 startActivity(intent);
             }
         });
@@ -91,12 +91,13 @@ public class FirstActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent dbmanager = new Intent(context,AndroidDatabaseManager.class);
-                startActivity(dbmanager);
+                startActivity(dbmanager);                                    // Moving to next activity for viewing contents of database
             }
         });
     }
 
 
+    /* Method for validating the feilds */
     public boolean validateForm() {
         if(tietName.getText().toString().isEmpty()) {
             tilName.setError("Enter Name");
@@ -119,6 +120,7 @@ public class FirstActivity extends AppCompatActivity {
         }
     }
 
+    /* Method for moving to a particular view*/  /* This method is not mandatory for MCC assignment */
     public void focusOnView(final View view) {
         svRegistrationForm.post(new Runnable() {
             @Override

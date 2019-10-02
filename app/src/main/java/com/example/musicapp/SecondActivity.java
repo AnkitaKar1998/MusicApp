@@ -34,7 +34,7 @@ public class SecondActivity extends AppCompatActivity {
         rvUserDetails = findViewById(R.id.rv_user_details);
         tvMessage = findViewById(R.id.tv_message);
 
-        Cursor cursor = databaseHelper.getAllUserDetails();
+        Cursor cursor = databaseHelper.getAllUserDetails();          // Retriving data from database
         if(cursor.getCount() == 0) {
             tvMessage.setVisibility(View.VISIBLE);
         } else {

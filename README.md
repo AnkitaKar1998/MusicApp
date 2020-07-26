@@ -1,6 +1,6 @@
 # Music App
 
-This is a dummy project in Android which I had made for one of my semester lab sessions, Mobile Communication and Computing (MCC).
+This is a dummy project in Android which I had made for one of my semester subject's lab sessions, Mobile Communication and Computing (MCC).
 <ul>
 <li> In this project I have implemented SQLite database in Android. 
 <li> Data of a user can be inserted in SQLite database which is created internally in the mobile device. Data of all inserted users can be viewed in the app.
